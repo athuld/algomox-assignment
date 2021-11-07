@@ -1,0 +1,24 @@
+- SERVER: Second
+  SERVER_DISPLAY_NAME: Second Server
+  SERVER_PARAMS:
+  - IS_DEFAULT: false
+    PARAMETER_NAME: Third Parameter
+    PARAMETER_TYPE: FLAG
+    PARAMETER_VALUE: Flagcheck
+  - IS_DEFAULT: true
+    PARAMETER_NAME: Fourth Parameter
+    PARAMETER_TYPE: Key
+    PARAMETER_VALUE: KeyParameter
+  SERVER_PORT: 6060
+- SERVER: First
+  SERVER_DISPLAY_NAME: First Server
+  SERVER_PARAMS:
+  - IS_DEFAULT: true
+    PARAMETER_NAME: First Parameter
+    PARAMETER_TYPE: ARG
+    PARAMETER_VALUE: 6122
+  - IS_DEFAULT: false
+    PARAMETER_NAME: Second Parameter
+    PARAMETER_TYPE: KEY
+    PARAMETER_VALUE: KeyParameter
+  SERVER_PORT: 658
