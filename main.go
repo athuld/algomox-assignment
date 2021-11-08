@@ -37,6 +37,7 @@ var jsonParams map[string]interface{}
 
 func getServer(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+  w.Header().Set("Access-Control-Allow-Origin", "*")
 	params := mux.Vars(r)
 
 	for _, server := range serverConfig {
