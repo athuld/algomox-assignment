@@ -1,3 +1,16 @@
+.initial-select {
+  padding: 7rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.initial-select span {
+  font-size: 1.5rem;
+  color: #4a4e69;
+}
+
 .form-container {
   padding: 1em 3em 1em 3em;
   display: flex;
@@ -6,13 +19,13 @@
 }
 
 .param-card {
-  margin: .5em 3em 0 3em;
+  margin: 0.5em 3em 0 3em;
   padding: 1em 2em 1em 2em;
   border-radius: 0.5em;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
 }
 
-.add-btn-container{
+.add-btn-container {
   display: flex;
   width: 100%;
   justify-content: flex-end;
@@ -23,8 +36,8 @@
   display: flex;
 }
 
-.param-display-card{
-  display:flex;
+.param-display-card {
+  display: flex;
   flex-direction: column;
   padding: 0.5em;
   width: 20vw;
@@ -34,7 +47,7 @@
 }
 
 .param-display-info {
-  display:flex;
+  display: flex;
   justify-content: space-evenly;
 }
 
@@ -42,18 +55,17 @@
   font-weight: 600;
 }
 
-
-.block{
-  font-size: .8em;
+.block {
+  font-size: 0.8em;
   display: flex;
   flex-direction: column;
 }
 
-.chip-block{
-  padding: .3em;
+.chip-block {
+  padding: 0.3em;
 }
 
-.submit-btn{
+.submit-btn {
   display: flex;
   justify-content: flex-end;
   margin-right: 3em;

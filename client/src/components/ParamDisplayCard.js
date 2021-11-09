@@ -5,9 +5,9 @@ const ParamDisplayCard = ({ serverData }) => {
   return (
     <section className="param-display-section">
       {serverData.SERVER_PARAMS.map((param, idx) => (
-        <div className="param-display-card">
+        <div key={idx} className="param-display-card">
           <span className="bold-text">{param.PARAMETER_NAME}</span>
-          <div key={idx} className="param-display-info">
+          <div className="param-display-info">
             <div className="block">
               <div>
                 <span className="bold-text">Type : </span>
@@ -29,11 +29,11 @@ const ParamDisplayCard = ({ serverData }) => {
               </div>
             </div>
           </div>
-          <Divider/>
+          <Divider />
           {param.IS_DEFAULT && (
-          <div className="chip-block">
-            <Chip label="Default" color="primary" size="small"/>
-          </div>
+            <div className="chip-block">
+              <Chip label="Default" color="primary" size="small" />
+            </div>
           )}
         </div>
       ))}

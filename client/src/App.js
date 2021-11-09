@@ -1,12 +1,14 @@
 import "./App.css";
-import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
+import { MenuItem, FormControl, TextField } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
-import MainForm from "./components/MainForm"
+import MainForm from "./components/MainForm";
+import _ from "lodash";
 
 function App() {
   const [server, setServer] = useState("");
-  const [serverData, setServerData] = useState([]);
+  const [serverData, setServerData] = useState({});
+  const [editableData, setEditableData] = useState({});
 
   const handleServerChange = async (e) => {
     setServer(e.target.value);
@@ -14,8 +16,10 @@ function App() {
       const res = await axios.get(
         `http://localhost:5000/api/server/get/${e.target.value}`
       );
-      setServerData(res.data);
-      console.log(res.data)
+      setEditableData(res.data);
+      // const ogData = JSON.parse(JSON.stringify(res.data));
+      const ogData = _.cloneDeep(res.data);
+      setServerData(ogData);
     } catch (error) {
       console.error(error);
     }
@@ -29,8 +33,8 @@ function App() {
         </div>
         <div className="server-select">
           <FormControl fullWidth>
-            <InputLabel id="server-select">Server Name</InputLabel>
-            <Select
+            <TextField
+              select
               labelId="server-select"
               value={server}
               onChange={handleServerChange}
@@ -40,10 +44,16 @@ function App() {
             >
               <MenuItem value="First">First</MenuItem>
               <MenuItem value="Second">Second</MenuItem>
-            </Select>
+            </TextField>
           </FormControl>
         </div>
-        <MainForm serverData={serverData} />
+        <MainForm
+          server={server}
+          serverData={serverData}
+          setServerData={setServerData}
+          editableData={editableData}
+          setEditableData={setEditableData}
+        />
       </div>
     </div>
   );
