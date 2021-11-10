@@ -15,6 +15,7 @@ const ParameterCard = ({
   editableData,
   setEditableData,
   setOpen,
+  setShowParameter,
 }) => {
   const handleParamChange = (idx, e) => {
     const values = [...editableData.SERVER_PARAMS];
@@ -33,6 +34,10 @@ const ParameterCard = ({
     const changedData = _.cloneDeep(editableData);
     setServerData(changedData);
     setOpen(false);
+    setShowParameter((prev) => ({
+      ...prev,
+      [parameter]: true,
+    }));
   };
 
   if (parameter === "") {
@@ -111,6 +116,7 @@ const ParameterCard = ({
             </div>
           );
         }
+        return <div key={idx}></div>;
       })}
     </section>
   );

@@ -2,8 +2,6 @@ import { useState } from "react";
 import {
   TextField,
   FormControl,
-  InputLabel,
-  Select,
   MenuItem,
   FormHelperText,
   Button,
@@ -20,6 +18,9 @@ const MainForm = ({
   setServerData,
   editableData,
   setEditableData,
+  showParameter,
+  setShowParameter,
+  orgParam,
 }) => {
   const [parameter, setParameter] = useState("");
   const [open, setOpen] = useState(false);
@@ -27,6 +28,10 @@ const MainForm = ({
 
   const handleParamChange = (e) => {
     setParameter(e.target.value);
+    setShowParameter(() => ({
+      ...orgParam,
+      [e.target.value]: false,
+    }));
     setOpen(true);
   };
 
@@ -104,9 +109,10 @@ const MainForm = ({
           editableData={editableData}
           setEditableData={setEditableData}
           setOpen={setOpen}
+          setShowParameter={setShowParameter}
         />
       )}
-      <ParamDisplayCard serverData={serverData} />
+      <ParamDisplayCard showParameter={showParameter} serverData={serverData} />
       <div className="submit-btn">
         <Button variant="contained" onClick={handleSubmit}>
           Submit

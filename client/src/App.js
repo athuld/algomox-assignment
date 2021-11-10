@@ -9,6 +9,8 @@ function App() {
   const [server, setServer] = useState("");
   const [serverData, setServerData] = useState({});
   const [editableData, setEditableData] = useState({});
+  const [showParameter, setShowParameter] = useState({});
+  const [orgParam, setOrgParm] = useState({});
 
   const handleServerChange = async (e) => {
     setServer(e.target.value);
@@ -17,9 +19,19 @@ function App() {
         `http://localhost:5000/api/server/get/${e.target.value}`
       );
       setEditableData(res.data);
-      // const ogData = JSON.parse(JSON.stringify(res.data));
       const ogData = _.cloneDeep(res.data);
       setServerData(ogData);
+
+      res.data.SERVER_PARAMS.forEach((param) => {
+        setShowParameter((prev) => ({
+          ...prev,
+          [param.PARAMETER_NAME]: true,
+        }));
+        setOrgParm((prev) => ({
+          ...prev,
+          [param.PARAMETER_NAME]: true,
+        }));
+      });
     } catch (error) {
       console.error(error);
     }
@@ -35,7 +47,6 @@ function App() {
           <FormControl fullWidth>
             <TextField
               select
-              labelId="server-select"
               value={server}
               onChange={handleServerChange}
               variant="outlined"
@@ -53,6 +64,9 @@ function App() {
           setServerData={setServerData}
           editableData={editableData}
           setEditableData={setEditableData}
+          showParameter={showParameter}
+          setShowParameter={setShowParameter}
+          orgParam={orgParam}
         />
       </div>
     </div>

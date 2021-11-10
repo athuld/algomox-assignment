@@ -65,6 +65,10 @@
   padding: 0.3em;
 }
 
+.chip-block-padding {
+  padding-bottom: 2.2em;
+}
+
 .submit-btn {
   display: flex;
   justify-content: flex-end;
